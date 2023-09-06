@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MainPage = () => {
+const FindList = () => {
   return <div>wer</div>;
 };
 
-export default MainPage;
+export default FindList;

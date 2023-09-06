@@ -1,8 +1,8 @@
 import React from 'react';
 import App from '../App';
 import { createBrowserRouter } from 'react-router-dom';
-import ErrorPage from '../components/ErrorPage';
-import MainPage from '../pages/MainPage';
+import ErrorPage from '../pages/error/ErrorPage';
+import FindList from '../pages/finder/FindList';
 
 interface IRouter {
   path: string;
@@ -20,7 +20,7 @@ const routerData: IRouter[] = [
     children: [
       {
         path: '',
-        element: <MainPage />,
+        element: <FindList />,
         // loader: async () =>
       },
     ],
