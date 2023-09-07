@@ -8,16 +8,14 @@ export const RecommendProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const getRecommend = async (debouncedValue: string) => {
     const result = await finder(debouncedValue);
-
-    if (result.length >= 10) {
+    if (debouncedValue.length === 0) {
+      setRecommend([]);
+    } else if (result.length >= 10) {
       const updatedResult = result.slice(0, 9);
-      console.log(updatedResult);
       setRecommend(updatedResult);
     } else {
       setRecommend(result);
     }
-    //FIXME
-    console.log(result);
   };
 
   const TodoContextValue: RecommendContextObj = {
