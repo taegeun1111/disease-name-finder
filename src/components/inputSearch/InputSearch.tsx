@@ -15,7 +15,6 @@ const InputSearch = () => {
 
   return (
     <StyledInputSearch>
-      {inputValue}
       <input
         type='text'
         defaultValue={inputValue}

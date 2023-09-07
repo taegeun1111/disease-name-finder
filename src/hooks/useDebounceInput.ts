@@ -1,4 +1,4 @@
-import React, { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 interface returnTypes {
   inputValue: string;

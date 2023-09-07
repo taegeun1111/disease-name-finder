@@ -8,7 +8,15 @@ export const RecommendProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const getRecommend = async (debouncedValue: string) => {
     const result = await finder(debouncedValue);
-    setRecommend(result);
+
+    if (result.length >= 10) {
+      const updatedResult = result.slice(0, 9);
+      console.log(updatedResult);
+      setRecommend(updatedResult);
+    } else {
+      setRecommend(result);
+    }
+    //FIXME
     console.log(result);
   };
 
