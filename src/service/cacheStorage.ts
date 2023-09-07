@@ -12,7 +12,6 @@ export const getCacheData = async (debouncedValue: string) => {
         // console.log('만료시간 : ' ,new Date(expirationTime).toLocaleString("ko-KR"));
         // console.log('삭제시간 : ', new Date(Date.now()).toLocaleString("ko-KR"));
         await cacheStorage.delete(debouncedValue);
-        console.log(`만료됨`);
       }
       return await cachedResponse.json();
     } else {

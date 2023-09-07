@@ -9,7 +9,7 @@ interface Props {
 
 const RecommendList = ({ searchResult, selectedActive }: Props) => {
   return (
-    <StyledRecommendList selectedActive={selectedActive}>
+    <StyledRecommendList $selectedActive={selectedActive}>
       <HiOutlineSearch className='recommend-icon' />
       <div className='recommend-text'>{searchResult}</div>
     </StyledRecommendList>

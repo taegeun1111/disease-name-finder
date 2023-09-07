@@ -9,7 +9,6 @@ export const RecommendProvider: React.FC<{ children: ReactNode }> = ({ children 
   const [searched, setSearched] = useState<boolean>(false);
 
   const getRecommend = async (debouncedValue: string) => {
-    console.log(`getRecommend `, recommend);
     if (debouncedValue.length === 0) {
       return setSearched(false);
     }

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 interface Props {
-  selectedActive: boolean;
+  $selectedActive: boolean;
 }
 
 export const StyledRecommendList = styled.div<Props>`
   ${(props) =>
-    props.selectedActive &&
+    props.$selectedActive &&
     `
     background-color: #116aff;
     color: white;
