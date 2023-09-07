@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from 'react';
 import { RecommendContext, RecommendContextObj } from './RecommendContext';
-import { RecommendType } from '../types/recommend';
-import { finder } from '../apis/finder';
-import { SLICE_END_NUMBER, SLICE_START_NUMBER } from '../service/constant/constantNumber';
+import { RecommendType } from '../../types/recommend';
+import { finder } from '../../apis/finder';
+import { SLICE_END_NUMBER, SLICE_START_NUMBER } from '../../service/constant/constantNumber';
 
 export const RecommendProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [recommend, setRecommend] = useState<RecommendType[]>([]);
@@ -23,11 +23,11 @@ export const RecommendProvider: React.FC<{ children: ReactNode }> = ({ children 
     setSearched(true);
   };
 
-  const TodoContextValue: RecommendContextObj = {
+  const RecommendContextValue: RecommendContextObj = {
     recommend,
     searched,
     getRecommend,
   };
 
-  return <RecommendContext.Provider value={TodoContextValue}>{children}</RecommendContext.Provider>;
+  return <RecommendContext.Provider value={RecommendContextValue}>{children}</RecommendContext.Provider>;
 };

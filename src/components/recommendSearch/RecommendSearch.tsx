@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledRecommendSearch } from './RecommendSearch.styled';
 import RecommendList from './RecommendList';
-import { useRecommend } from '../../store/RecommendContext';
+import { useRecommend } from '../../store/index';
 
 const RecommendSearch = () => {
   const { recommend, searched } = useRecommend();

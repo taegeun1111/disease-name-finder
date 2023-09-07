@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
-import { RecommendType } from '../types/recommend';
-
-export const useRecommend = () => useContext(RecommendContext);
+import React from 'react';
+import { RecommendType } from '../../types/recommend';
 
 export type RecommendContextObj = {
   recommend: RecommendType[];
