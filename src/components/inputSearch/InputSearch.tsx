@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { StyledInputSearch } from './InputSearch.styled';
 import { HiOutlineSearch } from 'react-icons/hi';
+import { finder } from '../../apis/finder';
 
 const InputSearch = () => {
   const [inputValue, setInputValue] = useState('');
@@ -19,6 +20,15 @@ const InputSearch = () => {
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
+
+  const recommendFinder = async () => {
+    const result = await finder(debouncedValue);
+    console.log(result);
+  };
+
+  useEffect(() => {
+    recommendFinder();
+  }, [debouncedValue]);
 
   return (
     <StyledInputSearch>
