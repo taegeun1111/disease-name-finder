@@ -32,7 +32,6 @@ const InputSearch = () => {
 
   return (
     <StyledInputSearch>
-      {debouncedValue}
       <input
         type='text'
         defaultValue={inputValue}

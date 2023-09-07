@@ -2,13 +2,16 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Layout } from './components/common/layout/Layout';
 import Header from './components/common/header/Header';
+import { RecommendProvider } from './store/RecommendProvider';
 
 function App() {
   return (
-    <Layout>
-      <Header />
-      <Outlet />
-    </Layout>
+    <RecommendProvider>
+      <Layout>
+        <Header />
+        <Outlet />
+      </Layout>
+    </RecommendProvider>
   );
 }
 
