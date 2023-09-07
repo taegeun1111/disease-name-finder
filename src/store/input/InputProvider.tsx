@@ -4,7 +4,8 @@ import { InputContext, InputContextObj } from './InputContext';
 export const InputProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [inputValue, setInputValue] = useState('');
   const [debouncedValue, setDebouncedValue] = useState('');
-  const [selected, setSelected] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [selected, setSelected] = useState(-1);
 
   useEffect(() => {
     const inputSearch = setTimeout(() => {
@@ -22,8 +23,11 @@ export const InputProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const InputContextValue: InputContextObj = {
     inputValue,
+    setInputValue,
     inputChangeHandler,
     debouncedValue,
+    focused,
+    setFocused,
     selected,
     setSelected,
   };

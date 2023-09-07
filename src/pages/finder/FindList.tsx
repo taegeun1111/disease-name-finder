@@ -4,13 +4,12 @@ import RecommendSearch from '../../components/recommendSearch/RecommendSearch';
 import { useInput } from '../../store';
 
 const FindList = () => {
-  const { selected } = useInput();
+  const { focused } = useInput();
 
-  console.log(`selected `, selected);
   return (
     <>
       <InputSearch />
-      {selected && <RecommendSearch />}
+      {focused && <RecommendSearch />}
     </>
   );
 };

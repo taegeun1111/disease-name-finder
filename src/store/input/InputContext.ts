@@ -2,16 +2,22 @@ import React, { ChangeEvent, SetStateAction } from 'react';
 
 export type InputContextObj = {
   inputValue: string;
+  setInputValue: React.Dispatch<SetStateAction<string>>;
   inputChangeHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   debouncedValue: string;
-  selected: boolean;
-  setSelected: React.Dispatch<SetStateAction<boolean>>;
+  focused: boolean;
+  setFocused: React.Dispatch<SetStateAction<boolean>>;
+  selected: number;
+  setSelected: React.Dispatch<SetStateAction<number>>;
 };
 
 export const InputContext = React.createContext<InputContextObj>({
   inputValue: '',
+  setInputValue: () => {},
   inputChangeHandler: () => {},
   debouncedValue: '',
-  selected: false,
+  focused: false,
+  setFocused: () => {},
+  selected: -1,
   setSelected: () => {},
 });
