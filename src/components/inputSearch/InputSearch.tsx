@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { StyledInputSearch } from './InputSearch.styled';
 import { HiOutlineSearch } from 'react-icons/hi';
-import { finder } from '../../apis/finder';
 import { useRecommend } from '../../store/RecommendContext';
 import { useDebounceInput } from '../../hooks/useDebounceInput';
 

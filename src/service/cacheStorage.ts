@@ -1,5 +1,5 @@
 import { RecommendType } from '../types/recommend';
-import { CACHE_NAME, CACHE_EXPIRATION_TIME } from '../styles/constant/CACHE_NAME';
+import { CACHE_EXPIRATION_TIME, CACHE_NAME } from './constant/constantCache';
 
 export const getCacheData = async (debouncedValue: string) => {
   try {
