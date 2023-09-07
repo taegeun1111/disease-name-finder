@@ -4,11 +4,12 @@ import { StyledRecommendList } from './RecommendList.styled';
 
 interface Props {
   searchResult: string;
+  selectedActive: boolean;
 }
 
-const RecommendList = ({ searchResult }: Props) => {
+const RecommendList = ({ searchResult, selectedActive }: Props) => {
   return (
-    <StyledRecommendList>
+    <StyledRecommendList selectedActive={selectedActive}>
       <HiOutlineSearch className='recommend-icon' />
       <div className='recommend-text'>{searchResult}</div>
     </StyledRecommendList>

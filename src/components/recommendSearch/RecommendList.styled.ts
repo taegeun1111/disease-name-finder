@@ -1,8 +1,20 @@
 import styled from 'styled-components';
 
-export const StyledRecommendList = styled.div`
+interface Props {
+  selectedActive: boolean;
+}
+
+export const StyledRecommendList = styled.div<Props>`
+  ${(props) =>
+    props.selectedActive &&
+    `
+    background-color: #116aff;
+    color: white;
+  `}
   display: flex;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
+  padding: 10px 10px;
+  border-radius: 5px;
 
   &:last-child {
     margin-bottom: 0;

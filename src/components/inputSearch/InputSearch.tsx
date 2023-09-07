@@ -5,8 +5,10 @@ import { useInput, useRecommend } from '../../store';
 
 const InputSearch = () => {
   const { getRecommend, recommend } = useRecommend();
-  const { inputValue, debouncedValue, inputChangeHandler, setFocused, selected, setSelected, setInputValue } =
+  const { inputValue, debouncedValue, inputChangeHandler, focused, setFocused, selected, setSelected, setInputValue } =
     useInput();
+
+  const initialValue = -1;
 
   useEffect(() => {
     getRecommend(debouncedValue);
@@ -20,17 +22,18 @@ const InputSearch = () => {
     setTimeout(() => {
       setFocused(false);
     }, 200);
+    setSelected(initialValue);
   };
 
   const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const initialValue = 1;
-
     if (e.key === 'ArrowUp') {
-      if (selected > 0) {
+      e.preventDefault();
+      if (selected > 0 && recommend.length > 1) {
         setSelected(selected - 1);
       }
     } else if (e.key === 'ArrowDown') {
-      if (selected < recommend.length - 1) {
+      e.preventDefault();
+      if (selected < recommend.length - 1 && recommend.length > 1) {
         setSelected(selected + 1);
       }
     } else if (e.key === 'Enter') {
@@ -42,7 +45,7 @@ const InputSearch = () => {
   };
 
   return (
-    <StyledInputSearch>
+    <StyledInputSearch focused={focused}>
       <input
         type='text'
         value={inputValue}

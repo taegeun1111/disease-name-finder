@@ -19,6 +19,7 @@ export const InputProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+    setSelected(-1);
   };
 
   const InputContextValue: InputContextObj = {
