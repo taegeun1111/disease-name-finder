@@ -12,8 +12,6 @@ export const finder = async (debouncedValue: string) => {
       await setCacheData(debouncedValue, response.data);
       console.log(response.data);
       return response.data;
-    } else {
-      console.log('실패');
     }
   } catch (error) {
     console.error('An error occurred:', error);

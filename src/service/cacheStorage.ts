@@ -1,8 +1,9 @@
 import { RecommendType } from '../types/recommend';
+import { CACHENAME } from '../styles/constant/cacheName';
 
 export const getCacheData = async (debouncedValue: string) => {
   try {
-    const cacheStorage = await caches.open('recommend');
+    const cacheStorage = await caches.open(CACHENAME);
     const cachedResponse = await cacheStorage.match(debouncedValue);
 
     if (!cachedResponse || !cachedResponse.ok) {
@@ -18,13 +19,15 @@ export const getCacheData = async (debouncedValue: string) => {
 
 export const setCacheData = async (debouncedValue: string, response: RecommendType[]) => {
   //FIXME : 상수로 바꾸기
-  const cache = await caches.open('recommend');
-  const init = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+  if (debouncedValue.length > 0) {
+    const cache = await caches.open(CACHENAME);
+    const init = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-  const CachedData = new Response(JSON.stringify(response), init);
-  await cache.put(debouncedValue, CachedData);
+    const CachedData = new Response(JSON.stringify(response), init);
+    await cache.put(debouncedValue, CachedData);
+  }
 };
