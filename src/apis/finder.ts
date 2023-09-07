@@ -10,7 +10,6 @@ export const finder = async (debouncedValue: string) => {
     } else if (!cachedData || debouncedValue.length > 0) {
       const response = await index.get(`/sick?q=${debouncedValue}`);
       await setCacheData(debouncedValue, response.data);
-      console.log(response.data);
       return response.data;
     }
   } catch (error) {
