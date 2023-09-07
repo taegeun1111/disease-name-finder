@@ -2,36 +2,20 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { StyledInputSearch } from './InputSearch.styled';
 import { HiOutlineSearch } from 'react-icons/hi';
 import { finder } from '../../apis/finder';
+import { useRecommend } from '../../store/RecommendContext';
+import { useDebounceInput } from '../../hooks/useDebounceInput';
 
 const InputSearch = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [debouncedValue, setDebouncedValue] = useState('');
+  const { getRecommend } = useRecommend();
+  const { inputValue, debouncedValue, inputChangeHandler } = useDebounceInput();
 
   useEffect(() => {
-    const inputSearch = setTimeout(() => {
-      setDebouncedValue(inputValue);
-    }, 500);
-
-    return () => {
-      clearTimeout(inputSearch);
-    };
-  }, [inputValue]);
-
-  const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
-  const recommendFinder = async () => {
-    const result = await finder(debouncedValue);
-    console.log(result);
-  };
-
-  useEffect(() => {
-    recommendFinder();
+    getRecommend(debouncedValue);
   }, [debouncedValue]);
 
   return (
     <StyledInputSearch>
+      {inputValue}
       <input
         type='text'
         defaultValue={inputValue}
