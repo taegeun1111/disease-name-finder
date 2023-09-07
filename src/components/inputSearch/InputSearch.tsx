@@ -45,7 +45,7 @@ const InputSearch = () => {
   };
 
   return (
-    <StyledInputSearch focused={focused}>
+    <StyledInputSearch $focused={focused}>
       <input
         type='text'
         value={inputValue}

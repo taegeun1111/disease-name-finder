@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 interface Props {
-  focused: boolean;
+  $focused: boolean;
 }
 
 export const StyledInputSearch = styled.div<Props>`
   ${(props) =>
-    props.focused &&
+    props.$focused &&
     `
-  outline : 2px solid #116aff;
-  `}
+      outline: 2px solid #116aff;
+    `}
+
   width: 80%;
   box-sizing: border-box;
   background-color: white;
