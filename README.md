@@ -5,7 +5,7 @@
 ## 🚀 배포 링크
 
 배포
-링크: [wanted-pre-onboarding-12th-2week.s3-website.ap-northeast-2.amazonaws.com](http://wanted-pre-onboarding-12th-2week.s3-website.ap-northeast-2.amazonaws.com)
+링크: [질병 검색 사이트](http://123)
 
 <br/>
 
@@ -79,6 +79,9 @@
 
 - api를 통해 데이터를 저장할 때 cache storage를 통해 사용할 키와 데이터를 입력받고, 데이터를 캐시에 저장 후 추가로 header에 만료일을 현재 시간에 정해둔 시간을 더해 설정해줘서 api를 호출할
   때 특정 키로 저장된 데이터를 확인하고, 데이터가 있다면 그 데이터의 만료일을 현재 시간과 비교한 후 만료 되었다면 해당 키를 자동으로 삭제한 후 데이터를 반환해줍니다.
+- 현재 cache key name은 보안 문제로 포함하지 않았습니다. 배포 사이트나 배포 영상을 확인해주세요.
+
+<br />
 
 ### **[Assignment 2] 키보드만으로 추천 검색어들로 이동 가능하도록 구현**
 
@@ -86,14 +89,26 @@
 
 사용 기술 : Context API
 
-1. 검색어들로 이동
+1. 추천 검색어 이동
 
 - onkeyDown를 통해 키보드를 누를 때 키 값을 비교해 어떤 키인지 확인 하고 각 키에 대한 처리를 했습니다. 아직 키보드 이벤트가 일어나지 않을 때를 -1로 설정하고 Context API를 통해 props를
   전달해주어 현재 추천 검색어의 위치를 나타내주었습니다.
+- 한글과 영어의 차이로 한글을 입력하면 0번 배열에 접근하지 못하고 `onkeydown`이벤트가 2번 발생하는 오류를 `IME event` 사용하여 한글 입력 처리 제어를 했습니다.
 
 <br/>
 
 ## 📽 구현 영상
+
+<p style="display: flex; justify-content: center;">
+  <figure style="text-align: center; margin-right: 20px;">
+    <img src="https://github.com/taegeun1111/disease-name-finder/assets/122959190/92481cbe-607b-4fff-a349-6173388c54bd" alt="이미지 1" width="70%">
+    <p>구현 영상</p>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="https://github.com/taegeun1111/disease-name-finder/assets/122959190/35e35917-51b9-4e87-81ad-bab683f389be" alt="이미지 2" width="70%">
+    <p>캐시 및 호출 확인</p>
+  </figure>
+</p>
 
 ## 🗂️ 폴더 구조
 

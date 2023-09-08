@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /.idea/*
-/src/service/constant/constantCache.ts
 ./.eslintcache
+/src/service/constant/constantCache.ts
