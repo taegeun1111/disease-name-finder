@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledInputSearch } from './InputSearch.styled';
 import { HiOutlineSearch } from 'react-icons/hi';
 import { useInput, useRecommend } from '../../store';
@@ -7,6 +7,7 @@ const InputSearch = () => {
   const { getRecommend, recommend } = useRecommend();
   const { inputValue, debouncedValue, inputChangeHandler, focused, setFocused, selected, setSelected, setInputValue } =
     useInput();
+  const [isComposing, setIsComposing] = useState(false);
 
   const initialValue = -1;
 
@@ -25,7 +26,18 @@ const InputSearch = () => {
     setSelected(initialValue);
   };
 
+  const handleCompositionStart = (event: React.CompositionEvent<HTMLInputElement>) => {
+    setIsComposing(true);
+  };
+
+  const handleCompositionEnd = (event: React.CompositionEvent<HTMLInputElement>) => {
+    setIsComposing(false);
+  };
+
   const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isComposing) {
+      return;
+    }
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (selected > 0 && recommend.length > 1) {
@@ -46,6 +58,7 @@ const InputSearch = () => {
 
   return (
     <StyledInputSearch $focused={focused}>
+      {selected}
       <input
         type='text'
         value={inputValue}
@@ -55,6 +68,8 @@ const InputSearch = () => {
         onFocus={inputFocusHandler}
         onBlur={inputBlurHandler}
         onKeyDown={keyDownHandler}
+        onCompositionStart={handleCompositionStart}
+        onCompositionEnd={handleCompositionEnd}
       />
       <button type='button' className='search-btn'>
         <HiOutlineSearch />

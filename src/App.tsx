@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Layout } from './components/common/layout/Layout';
-import Header from './components/common/header/Header';
+import { Layout } from './components/common/Layout/Layout';
+import Header from './components/common/Header/Header';
 import { RecommendProvider } from './store/recommend/RecommendProvider';
 import { InputProvider } from './store/input/InputProvider';
 

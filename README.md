@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# [Week 2] Best Practice of Wanted Pre-onboarding Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+원티드 프리온보딩 인턴십 3팀 3주차 개인과제입니다.
 
-## Available Scripts
+## 🚀 배포 링크
 
-In the project directory, you can run:
+배포
+링크: [wanted-pre-onboarding-12th-2week.s3-website.ap-northeast-2.amazonaws.com](http://wanted-pre-onboarding-12th-2week.s3-website.ap-northeast-2.amazonaws.com)
 
-### `npm start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🎬 프로젝트 로컬 실행 방법
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Frontend
 
-### `npm test`
+```
+ git clone https://github.com/taegeun1111/disease-name-finderApi.git
+ npm install
+ npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Backend
 
-### `npm run build`
+```
+ git clone git clone https://github.com/walking-sunset/assignment-api.git
+ npm install
+ npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ 기술 스택
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div>
+   <img src="https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=white">
+   <img src="https://img.shields.io/badge/typescript-3178C6?style=flat&logo=typescript&logoColor=white">
+   <img src="https://img.shields.io/badge/styled components-DB7093?style=flat&logo=styledcomponents&logoColor=white">
+   <img src="https://img.shields.io/badge/react router-CA4245?style=flat&logo=react router&logoColor=white">
+  <img src="https://img.shields.io/badge/axios-5A29E4?style=flat&logo=axios&logoColor=white">
+   <br/>
+   <img src="https://img.shields.io/badge/husky-efefef?style=flat&logo=husky&logoColor=white">
+   <img src="https://img.shields.io/badge/ESlint-4B32C3?style=flat&logo=eslint&logoColor=white">
+   <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat&logo=prettier&logoColor=white">
+</div>
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📝 요구 사항
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **[Assignment 0] 검색시 API 호출을 통해 검색어 추천 기능 구현**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> - 검색어가 없을 시 “검색어 없음” 표출
+> - 입력마다 API 호출하지 않도록 API 호출 횟수를 줄이는 전략 수립 및 실행
+> - API를 호출할 때 마다 console.info("calling api") 출력을 통해 콘솔창에서 API 호출 횟수 확인이 가능하도록 설정
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### **구현 방법**
 
-## Learn More
+사용 기술 : axios
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. API 호출
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- API를 호출할 때 axios의 `interceptors.request.use`를 통하여 요청을 보내기 전 출력값 호출 <br />
+
+2. API 호출 횟수를 줄이는 전략
+
+- debouncing을 통하여 일정 시간 동안 입력값이 변경 되지 않을 때 500ms를 대기했다 api를 호출되게 하였습니다. 끝나면 클린업 함수를 통하여 해당 타이머를 제거
+
+<br />
+
+### **[Assignment 1] API 호출별로 로컬 캐싱 구현**
+
+> - 캐싱 기능을 제공하는 라이브러리 사용 금지(React-Query 등)
+
+#### **구현 방법**
+
+사용 기술 : cache storage
+
+1. 로컬 캐싱
+
+- api를 통해 데이터를 저장할 때 cache storage를 통해 사용할 키와 데이터를 입력받고, 데이터를 캐시에 저장 후 추가로 header에 만료일을 현재 시간에 정해둔 시간을 더해 설정해줘서 api를 호출할
+  때 특정 키로 저장된 데이터를 확인하고, 데이터가 있다면 그 데이터의 만료일을 현재 시간과 비교한 후 만료 되었다면 해당 키를 자동으로 삭제한 후 데이터를 반환해줍니다.
+
+### **[Assignment 2] 키보드만으로 추천 검색어들로 이동 가능하도록 구현**
+
+#### **구현 방법**
+
+사용 기술 : Context API
+
+1. 검색어들로 이동
+
+- onkeyDown를 통해 키보드를 누를 때 키 값을 비교해 어떤 키인지 확인 하고 각 키에 대한 처리를 했습니다. 아직 키보드 이벤트가 일어나지 않을 때를 -1로 설정하고 Context API를 통해 props를
+  전달해주어 현재 추천 검색어의 위치를 나타내주었습니다.
+
+<br/>
+
+## 📽 구현 영상
+
+## 🗂️ 폴더 구조
+
+```
+📦src
+ ┣ 📂apis
+ ┣ 📂components
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂Header
+ ┃ ┃ ┗ 📂Layout
+ ┃ ┣ 📂inputSearch
+ ┃ ┗ 📂recommendSearch
+ ┣ 📂pages
+ ┃ ┣ 📂error
+ ┃ ┣ 📂finderApi
+ ┣ 📂router
+ ┣ 📂service
+ ┃ ┣ 📂constant
+ ┃ ┗ 📂cacheStorage.ts
+ ┣ 📂store
+ ┃ ┣ 📂input
+ ┃ ┣ 📂recommend
+ ┣ 📂styles
+ ┗ 📂types
+```
