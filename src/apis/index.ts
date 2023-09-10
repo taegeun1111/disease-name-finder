@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const index = axios.create({
-  baseURL: 'http://localhost:4000',
+  baseURL: 'https://wanted-backend-week3.vercel.app/',
   headers: { 'Content-Type': 'application/json' },
 });
 
