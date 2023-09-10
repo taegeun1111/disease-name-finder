@@ -5,7 +5,7 @@
 ## 🚀 배포 링크
 
 배포
-링크: [질병 검색 사이트](https://disease-name-finder-mfjup50jd-taegeun1111.vercel.app/)
+링크: [질병 검색 사이트](https://disease-name-finder-nkxovyv70-taegeun1111.vercel.app/)
 
 <br/>
 
