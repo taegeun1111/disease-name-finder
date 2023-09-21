@@ -1,4 +1,4 @@
-# [Week 2] Best Practice of Wanted Pre-onboarding Assignment
+# [Week 3] Best Practice of Wanted Pre-onboarding Assignment
 
 원티드 프리온보딩 인턴십 3팀 3주차 개인과제입니다.
 
